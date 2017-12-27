@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+	<metadata>
+		<id>Shuttle.Core.Contract</id>
+		<version>{semver}</version>
+		<authors>Eben Roux</authors>
+		<owners>Eben Roux</owners>
+		<licenseUrl>https://github.com/shuttle/Shuttle.Core.Contract/raw/master/LICENSE</licenseUrl>
+		<projectUrl>https://github.com/shuttle/Shuttle.Core.Contract</projectUrl>
+		<iconUrl>https://raw.githubusercontent.com/Shuttle/Shuttle.Core.Contract/master/.media/logo.png</iconUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+	  <description>A guard implementation that performs asserts/assumptions to prevent invalid code execution.</description>
+		<releaseNotes/>
+		<copyright>Copyright (c) {year}, Eben Roux</copyright>
+		<tags>shuttle guard</tags>
+	</metadata>
+</package>
