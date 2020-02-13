@@ -16,7 +16,8 @@ namespace Shuttle.Core.Contract
 
             try
             {
-                exception = (TException) Activator.CreateInstance(typeof(TException), message);
+                exception = (TException) Activator.CreateInstance(typeof(TException),
+                    !string.IsNullOrWhiteSpace(message) ? message : Resources.NoMessageSpecified);
             }
             catch (Exception ex)
             {
@@ -32,18 +33,28 @@ namespace Shuttle.Core.Contract
             if (value == null)
             {
                 throw new NullReferenceException(string.Format(CultureInfo.CurrentCulture, Resources.NullValueException,
-                    name));
+                    !string.IsNullOrWhiteSpace(name) ? name : Resources.NoNameSpecified));
             }
         }
 
         public static void AgainstNullOrEmptyString(string value, string name)
         {
-            AgainstNull(value, name);
-
-            if (value.Length == 0)
+            if (string.IsNullOrWhiteSpace(value))
             {
                 throw new NullReferenceException(string.Format(CultureInfo.CurrentCulture,
-                    Resources.EmptyStringException, name));
+                    Resources.EmptyStringException,
+                    !string.IsNullOrWhiteSpace(name) ? name : Resources.NoNameSpecified));
+            }
+        }
+
+        public static void AgainstUndefinedEnum<TEnum>(object value, string name)
+        {
+            if (!Enum.IsDefined(typeof(TEnum), value))
+            {
+                throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture,
+                    string.Format(CultureInfo.CurrentCulture, Resources.UndefinedEnumException,
+                        value ?? Resources.NoValueSpecified, typeof(TEnum).FullName,
+                        !string.IsNullOrWhiteSpace(name) ? name : Resources.NoNameSpecified)));
             }
         }
     }

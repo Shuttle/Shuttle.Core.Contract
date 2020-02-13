@@ -19,7 +19,7 @@ namespace Shuttle.Core.Contract {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -79,11 +79,47 @@ namespace Shuttle.Core.Contract {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to (no message specified).
+        /// </summary>
+        public static string NoMessageSpecified {
+            get {
+                return ResourceManager.GetString("NoMessageSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (no name specified).
+        /// </summary>
+        public static string NoNameSpecified {
+            get {
+                return ResourceManager.GetString("NoNameSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (no value specified).
+        /// </summary>
+        public static string NoValueSpecified {
+            get {
+                return ResourceManager.GetString("NoValueSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Value with name &apos;{0}&apos; may not be null..
         /// </summary>
         public static string NullValueException {
             get {
                 return ResourceManager.GetString("NullValueException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The value &apos;{0}&apos; does not exist in enumeration of type &apos;{1}&apos; with name &apos;{2}&apos;..
+        /// </summary>
+        public static string UndefinedEnumException {
+            get {
+                return ResourceManager.GetString("UndefinedEnumException", resourceCulture);
             }
         }
     }
