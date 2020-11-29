@@ -57,5 +57,12 @@ namespace Shuttle.Core.Contract
                         !string.IsNullOrWhiteSpace(name) ? name : Resources.NoNameSpecified)));
             }
         }
+
+        public static void AgainstNullOrEmptyEnumerable(object enumerable, string name)
+        {
+            AgainstNull(enumerable, name);
+
+
+        }
     }
 }

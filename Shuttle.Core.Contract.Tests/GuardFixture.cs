@@ -82,5 +82,13 @@ namespace Shuttle.Core.Contract.Tests
             Assert.That(() => Guard.AgainstUndefinedEnum<Level>("Four", null), Throws.TypeOf<InvalidOperationException>());
             Assert.That(() => Guard.AgainstUndefinedEnum<Level>("Four", string.Empty), Throws.TypeOf<InvalidOperationException>());
         }
+
+        [Test]
+        public void Should_be_able_to_guard_against_null_or_empty_enumerable()
+        {
+            List list = null;
+
+            Assert.That(()=> Guard.AgainstNullOrEmptyEnumerable(list, nameof(list)), Throws.TypeOf<NullReferenceException>());
+        }
     }
 }
