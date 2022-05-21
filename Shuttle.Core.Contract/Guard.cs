@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 
 namespace Shuttle.Core.Contract
 {
@@ -58,11 +60,16 @@ namespace Shuttle.Core.Contract
             }
         }
 
-        public static void AgainstNullOrEmptyEnumerable(object enumerable, string name)
+        public static void AgainstEmptyEnumerable<T>(IEnumerable<T> enumerable, string name)
         {
             AgainstNull(enumerable, name);
 
-
+            if (!enumerable.Any())
+            {
+                throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture,
+                    string.Format(CultureInfo.CurrentCulture, Resources.EmptyEnumerableException,
+                        !string.IsNullOrWhiteSpace(name) ? name : Resources.NoNameSpecified)));
+            }
         }
     }
 }

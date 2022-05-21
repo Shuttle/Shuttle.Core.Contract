@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 
 namespace Shuttle.Core.Contract.Tests
@@ -84,11 +85,9 @@ namespace Shuttle.Core.Contract.Tests
         }
 
         [Test]
-        public void Should_be_able_to_guard_against_null_or_empty_enumerable()
+        public void Should_be_able_to_guard_against_an_empty_enumerable()
         {
-            List list = null;
-
-            Assert.That(()=> Guard.AgainstNullOrEmptyEnumerable(list, nameof(list)), Throws.TypeOf<NullReferenceException>());
+            Assert.That(()=> Guard.AgainstEmptyEnumerable(new List<string>(), "list"), Throws.TypeOf<InvalidOperationException>());
         }
     }
 }

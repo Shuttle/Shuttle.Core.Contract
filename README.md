@@ -9,30 +9,42 @@ A guard implementation that performs assertions/assumptions to prevent invalid c
 
 # Guard
 
-``` c#
-void Against<TException>(bool assertion, string message) where TException : Exception
+```c#
+void Against<TException>(bool assertion, string message) 
+	where TException : Exception
 ```
 
 Throws exception `TException` with the given `message` if the `assertion` is false.  If exception type `TException` does not have a constructor that accepts a `message` then an `InvalidOperationException` is thrown instead.
 
-``` c#
+---
+
+```c#
 void AgainstNull(object value, string name)
 ```
 
 Throws a `NullReferenceException` if the given `value` is `null`.
 
-``` c#
+---
+
+```c#
 void AgainstNullOrEmptyString(string value, string name)
 ```
 
-<<<<<<< HEAD
-Throws a `NullReferenceException` if the given `value` is `null` or empty.
+Throws a `NullReferenceException` if the given `value` is `null` or empty/whitespace.
 
-``` c#
+---
+
+```c#
 void AgainstUndefinedEnum<TEnum>(object value, string name)
 ```
 
-Throws an `InvalidOperationException` if the given `value` is not defined for enumeration type `TEnum`.
-=======
-Throws a `NullReferenceException` is the given `value` is `null` or empty.
->>>>>>> f144f3a0ed8a8cb705b0b8077029c767d10cd846
+Throws a `InvalidOperationException` if the provided `value` cannot be found in the given `enum`.
+
+---
+
+```c#
+void AgainstEmptyEnumerable<T>(IEnumerable<T> enumerable, string name)
+```
+
+Throws a `InvalidOperationException` if the given `enumerable` does not contain any entries.
+
