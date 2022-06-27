@@ -89,5 +89,12 @@ namespace Shuttle.Core.Contract.Tests
         {
             Assert.That(()=> Guard.AgainstEmptyEnumerable(new List<string>(), "list"), Throws.TypeOf<InvalidOperationException>());
         }
+
+        [Test]
+        public void Should_be_able_to_guard_against_empty_guid()
+        {
+            Assert.That(() => Guard.AgainstEmptyGuid(Guid.NewGuid(), "guid-name"), Throws.Nothing);
+            Assert.That(() => Guard.AgainstEmptyGuid(Guid.Empty, string.Empty), Throws.TypeOf<ArgumentException>());
+        }
     }
 }

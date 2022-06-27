@@ -38,7 +38,7 @@ Throws a `NullReferenceException` if the given `value` is `null` or empty/whites
 void AgainstUndefinedEnum<TEnum>(object value, string name)
 ```
 
-Throws a `InvalidOperationException` if the provided `value` cannot be found in the given `enum`.
+Throws an `InvalidOperationException` if the provided `value` cannot be found in the given `enum`.
 
 ---
 
@@ -46,5 +46,12 @@ Throws a `InvalidOperationException` if the provided `value` cannot be found in 
 void AgainstEmptyEnumerable<T>(IEnumerable<T> enumerable, string name)
 ```
 
-Throws a `InvalidOperationException` if the given `enumerable` does not contain any entries.
+Throws an `InvalidOperationException` if the given `enumerable` does not contain any entries.
 
+---
+
+```c#
+public static void AgainstEmptyGuid(Guid value, string name)
+```
+
+Throws and `ArgumentException` when the `value` is equal to an empty `Guid` (`{00000000-0000-0000-0000-000000000000}`).

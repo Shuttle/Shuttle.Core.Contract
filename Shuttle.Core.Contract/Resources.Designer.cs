@@ -61,7 +61,7 @@ namespace Shuttle.Core.Contract {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The enumerable &apos;{0}&apos; does not contain any elements..
+        ///   Looks up a localized string similar to The enumerable argument with name &apos;{0}&apos; does not contain any elements..
         /// </summary>
         public static string EmptyEnumerableException {
             get {
@@ -70,7 +70,16 @@ namespace Shuttle.Core.Contract {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The string with name &apos;{0}&apos; may not be empty..
+        ///   Looks up a localized string similar to The GUID argument with name &apos;{0}&apos; may not be an empty GUID ({{00000000-0000-0000-0000-000000000000}})..
+        /// </summary>
+        public static string EmptyGuidException {
+            get {
+                return ResourceManager.GetString("EmptyGuidException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The string argument with name &apos;{0}&apos; may not be empty..
         /// </summary>
         public static string EmptyStringException {
             get {
@@ -115,7 +124,7 @@ namespace Shuttle.Core.Contract {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Value with name &apos;{0}&apos; may not be null..
+        ///   Looks up a localized string similar to Value for argument with name &apos;{0}&apos; may not be null..
         /// </summary>
         public static string NullValueException {
             get {
@@ -124,7 +133,7 @@ namespace Shuttle.Core.Contract {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The value &apos;{0}&apos; does not exist in enumeration of type &apos;{1}&apos; with name &apos;{2}&apos;..
+        ///   Looks up a localized string similar to The value &apos;{0}&apos; does not exist in enumeration of type &apos;{1}&apos; for argument with name &apos;{2}&apos;..
         /// </summary>
         public static string UndefinedEnumException {
             get {

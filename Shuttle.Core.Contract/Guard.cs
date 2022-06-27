@@ -49,6 +49,16 @@ namespace Shuttle.Core.Contract
             }
         }
 
+        public static void AgainstEmptyGuid(Guid value, string name)
+        {
+            if (Guid.Empty.Equals(value))
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                    Resources.EmptyGuidException,
+                    !string.IsNullOrWhiteSpace(name) ? name : Resources.NoNameSpecified));
+            }
+        }
+
         public static void AgainstUndefinedEnum<TEnum>(object value, string name)
         {
             if (!Enum.IsDefined(typeof(TEnum), value))
