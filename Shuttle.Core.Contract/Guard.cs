@@ -30,16 +30,18 @@ namespace Shuttle.Core.Contract
             throw exception;
         }
 
-        public static void AgainstNull(object value, string name)
+        public static T AgainstNull<T>(T value, string name)
         {
             if (value == null)
             {
                 throw new NullReferenceException(string.Format(CultureInfo.CurrentCulture, Resources.NullValueException,
                     !string.IsNullOrWhiteSpace(name) ? name : Resources.NoNameSpecified));
             }
+
+            return value;
         }
 
-        public static void AgainstNullOrEmptyString(string value, string name)
+        public static string AgainstNullOrEmptyString(string value, string name)
         {
             if (string.IsNullOrWhiteSpace(value))
             {
@@ -47,9 +49,11 @@ namespace Shuttle.Core.Contract
                     Resources.EmptyStringException,
                     !string.IsNullOrWhiteSpace(name) ? name : Resources.NoNameSpecified));
             }
+
+            return value;
         }
 
-        public static void AgainstEmptyGuid(Guid value, string name)
+        public static Guid AgainstEmptyGuid(Guid value, string name)
         {
             if (Guid.Empty.Equals(value))
             {
@@ -57,9 +61,11 @@ namespace Shuttle.Core.Contract
                     Resources.EmptyGuidException,
                     !string.IsNullOrWhiteSpace(name) ? name : Resources.NoNameSpecified));
             }
+
+            return value;
         }
 
-        public static void AgainstUndefinedEnum<TEnum>(object value, string name)
+        public static TEnum AgainstUndefinedEnum<TEnum>(object value, string name)
         {
             if (!Enum.IsDefined(typeof(TEnum), value))
             {
@@ -68,9 +74,11 @@ namespace Shuttle.Core.Contract
                         value ?? Resources.NoValueSpecified, typeof(TEnum).FullName,
                         !string.IsNullOrWhiteSpace(name) ? name : Resources.NoNameSpecified)));
             }
+
+            return (TEnum)Enum.Parse(typeof(TEnum), value.ToString());
         }
 
-        public static void AgainstEmptyEnumerable<T>(IEnumerable<T> enumerable, string name)
+        public static IEnumerable<T> AgainstEmptyEnumerable<T>(IEnumerable<T> enumerable, string name)
         {
             AgainstNull(enumerable, name);
 
@@ -80,6 +88,8 @@ namespace Shuttle.Core.Contract
                     string.Format(CultureInfo.CurrentCulture, Resources.EmptyEnumerableException,
                         !string.IsNullOrWhiteSpace(name) ? name : Resources.NoNameSpecified)));
             }
+
+            return enumerable;
         }
     }
 }

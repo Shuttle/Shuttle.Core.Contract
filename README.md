@@ -19,34 +19,34 @@ Throws exception `TException` with the given `message` if the `assertion` is fal
 ---
 
 ```c#
-void AgainstNull(object value, string name)
+T AgainstNull<T>(T value, string name)
 ```
 
-Throws a `NullReferenceException` if the given `value` is `null`.
+Throws a `NullReferenceException` if the given `value` is `null`; else returns the `value`.
 
 ---
 
 ```c#
-void AgainstNullOrEmptyString(string value, string name)
+string AgainstNullOrEmptyString(string value, string name)
 ```
 
-Throws a `NullReferenceException` if the given `value` is `null` or empty/whitespace.
+Throws a `NullReferenceException` if the given `value` is `null` or empty/whitespace; else returns the `value`.
 
 ---
 
 ```c#
-void AgainstUndefinedEnum<TEnum>(object value, string name)
+TEnum AgainstUndefinedEnum<TEnum>(object value, string name)
 ```
 
-Throws an `InvalidOperationException` if the provided `value` cannot be found in the given `enum`.
+Throws an `InvalidOperationException` if the provided `value` cannot be found in the given `TEnum`; else returns the `value` as `TEnum`.
 
 ---
 
 ```c#
-void AgainstEmptyEnumerable<T>(IEnumerable<T> enumerable, string name)
+IEnumerable<T> AgainstEmptyEnumerable<T>(IEnumerable<T> enumerable, string name)
 ```
 
-Throws an `InvalidOperationException` if the given `enumerable` does not contain any entries.
+Throws an `InvalidOperationException` if the given `enumerable` does not contain any entries; else returns the `enumerable`.
 
 ---
 
@@ -54,4 +54,4 @@ Throws an `InvalidOperationException` if the given `enumerable` does not contain
 public static void AgainstEmptyGuid(Guid value, string name)
 ```
 
-Throws and `ArgumentException` when the `value` is equal to an empty `Guid` (`{00000000-0000-0000-0000-000000000000}`).
+Throws and `ArgumentException` when the `value` is equal to an empty `Guid` (`{00000000-0000-0000-0000-000000000000}`); else returns the `value`.
