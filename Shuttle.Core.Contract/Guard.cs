@@ -29,7 +29,7 @@ namespace Shuttle.Core.Contract
             throw exception ?? new ApplicationException(message);
         }
 
-        public static T AgainstNull<T>(T value, [CallerArgumentExpression("value")] string? name = null)
+        public static T AgainstNull<T>(T? value, [CallerArgumentExpression("value")] string? name = null)
         {
             if (value == null)
             {
@@ -39,7 +39,7 @@ namespace Shuttle.Core.Contract
             return value;
         }
 
-        public static string AgainstNullOrEmptyString(string value, [CallerArgumentExpression("value")] string? name = null)
+        public static string AgainstNullOrEmptyString(string? value, [CallerArgumentExpression("value")] string? name = null)
         {
             if (string.IsNullOrWhiteSpace(value))
             {
@@ -59,13 +59,13 @@ namespace Shuttle.Core.Contract
             return value;
         }
 
-        public static TEnum AgainstUndefinedEnum<TEnum>(object value, [CallerArgumentExpression("value")] string? name = null)
+        public static TEnum AgainstUndefinedEnum<TEnum>(object? value, [CallerArgumentExpression("value")] string? name = null)
         {
             ArgumentNullException.ThrowIfNull(value);
 
             if (!Enum.IsDefined(typeof(TEnum), value))
             {
-                throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, string.Format(CultureInfo.CurrentCulture, Resources.UndefinedEnumException, value ?? Resources.NoValueSpecified, typeof(TEnum).FullName, !string.IsNullOrWhiteSpace(name) ? name : Resources.NoNameSpecified)));
+                throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, string.Format(CultureInfo.CurrentCulture, Resources.UndefinedEnumException, value, typeof(TEnum).FullName, !string.IsNullOrWhiteSpace(name) ? name : Resources.NoNameSpecified)));
             }
 
             return (TEnum)Enum.Parse(typeof(TEnum), value.ToString()!);
