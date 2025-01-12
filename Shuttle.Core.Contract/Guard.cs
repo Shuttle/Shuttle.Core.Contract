@@ -33,7 +33,7 @@ namespace Shuttle.Core.Contract
         {
             if (value == null)
             {
-                throw new NullReferenceException(string.Format(CultureInfo.CurrentCulture, Resources.NullValueException, !string.IsNullOrWhiteSpace(name) ? name : Resources.NoNameSpecified));
+                throw new ArgumentNullException(string.Format(CultureInfo.CurrentCulture, Resources.NullValueException, !string.IsNullOrWhiteSpace(name) ? name : Resources.NoNameSpecified));
             }
 
             return value;
@@ -43,7 +43,7 @@ namespace Shuttle.Core.Contract
         {
             if (string.IsNullOrWhiteSpace(value))
             {
-                throw new NullReferenceException(string.Format(CultureInfo.CurrentCulture, Resources.EmptyStringException, !string.IsNullOrWhiteSpace(name) ? name : Resources.NoNameSpecified));
+                throw new ArgumentNullException(string.Format(CultureInfo.CurrentCulture, Resources.EmptyStringException, !string.IsNullOrWhiteSpace(name) ? name : Resources.NoNameSpecified));
             }
 
             return value;
@@ -75,7 +75,7 @@ namespace Shuttle.Core.Contract
         {
             if (enumerable == null)
             {
-                throw new NullReferenceException(string.Format(CultureInfo.CurrentCulture, Resources.NullValueException, !string.IsNullOrWhiteSpace(name) ? name : Resources.NoNameSpecified));
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.NullValueException, !string.IsNullOrWhiteSpace(name) ? name : Resources.NoNameSpecified));
             }
 
             if (!enumerable.Any())

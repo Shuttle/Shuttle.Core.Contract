@@ -34,9 +34,9 @@ namespace Shuttle.Core.Contract.Tests
 
             o = null;
 
-            Assert.That(() => Guard.AgainstNull(o), Throws.TypeOf<NullReferenceException>());
-            Assert.That(() => Guard.AgainstNull(o, null), Throws.TypeOf<NullReferenceException>());
-            Assert.That(() => Guard.AgainstNull(o, string.Empty), Throws.TypeOf<NullReferenceException>());
+            Assert.That(() => Guard.AgainstNull(o), Throws.TypeOf<ArgumentNullException>());
+            Assert.That(() => Guard.AgainstNull(o, null), Throws.TypeOf<ArgumentNullException>());
+            Assert.That(() => Guard.AgainstNull(o, string.Empty), Throws.TypeOf<ArgumentNullException>());
 
             var item = new FixtureItem
             {
@@ -50,9 +50,9 @@ namespace Shuttle.Core.Contract.Tests
 
             item = null;
 
-            Assert.That(() => Guard.AgainstNull(item, nameof(item)), Throws.TypeOf<NullReferenceException>());
-            Assert.That(() => Guard.AgainstNull(item, null), Throws.TypeOf<NullReferenceException>());
-            Assert.That(() => Guard.AgainstNull(item, string.Empty), Throws.TypeOf<NullReferenceException>());
+            Assert.That(() => Guard.AgainstNull(item, nameof(item)), Throws.TypeOf<ArgumentNullException>());
+            Assert.That(() => Guard.AgainstNull(item, null), Throws.TypeOf<ArgumentNullException>());
+            Assert.That(() => Guard.AgainstNull(item, string.Empty), Throws.TypeOf<ArgumentNullException>());
         }
 
         [Test]
@@ -67,21 +67,21 @@ namespace Shuttle.Core.Contract.Tests
 
             s = null;
 
-            Assert.That(() => Guard.AgainstNullOrEmptyString(s, nameof(s)), Throws.TypeOf<NullReferenceException>());
-            Assert.That(() => Guard.AgainstNullOrEmptyString(s, null), Throws.TypeOf<NullReferenceException>());
-            Assert.That(() => Guard.AgainstNullOrEmptyString(s, string.Empty), Throws.TypeOf<NullReferenceException>());
+            Assert.That(() => Guard.AgainstNullOrEmptyString(s, nameof(s)), Throws.TypeOf<ArgumentNullException>());
+            Assert.That(() => Guard.AgainstNullOrEmptyString(s, null), Throws.TypeOf<ArgumentNullException>());
+            Assert.That(() => Guard.AgainstNullOrEmptyString(s, string.Empty), Throws.TypeOf<ArgumentNullException>());
 
             s = string.Empty;
 
-            Assert.That(() => Guard.AgainstNullOrEmptyString(s, nameof(s)), Throws.TypeOf<NullReferenceException>());
-            Assert.That(() => Guard.AgainstNullOrEmptyString(s, null), Throws.TypeOf<NullReferenceException>());
-            Assert.That(() => Guard.AgainstNullOrEmptyString(s, string.Empty), Throws.TypeOf<NullReferenceException>());
+            Assert.That(() => Guard.AgainstNullOrEmptyString(s, nameof(s)), Throws.TypeOf<ArgumentNullException>());
+            Assert.That(() => Guard.AgainstNullOrEmptyString(s, null), Throws.TypeOf<ArgumentNullException>());
+            Assert.That(() => Guard.AgainstNullOrEmptyString(s, string.Empty), Throws.TypeOf<ArgumentNullException>());
 
             s = "   ";
 
-            Assert.That(() => Guard.AgainstNullOrEmptyString(s, nameof(s)), Throws.TypeOf<NullReferenceException>());
-            Assert.That(() => Guard.AgainstNullOrEmptyString(s, null), Throws.TypeOf<NullReferenceException>());
-            Assert.That(() => Guard.AgainstNullOrEmptyString(s, string.Empty), Throws.TypeOf<NullReferenceException>());
+            Assert.That(() => Guard.AgainstNullOrEmptyString(s, nameof(s)), Throws.TypeOf<ArgumentNullException>());
+            Assert.That(() => Guard.AgainstNullOrEmptyString(s, null), Throws.TypeOf<ArgumentNullException>());
+            Assert.That(() => Guard.AgainstNullOrEmptyString(s, string.Empty), Throws.TypeOf<ArgumentNullException>());
         }
 
         [Test]
