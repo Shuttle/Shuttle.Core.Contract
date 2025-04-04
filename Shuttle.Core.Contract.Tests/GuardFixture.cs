@@ -60,28 +60,28 @@ namespace Shuttle.Core.Contract.Tests
         {
             var s = "value";
 
-            Assert.That(() => Guard.AgainstNullOrEmptyString(s), Throws.Nothing);
-            Assert.That(() => Guard.AgainstNullOrEmptyString(s, null), Throws.Nothing);
-            Assert.That(() => Guard.AgainstNullOrEmptyString(s, string.Empty), Throws.Nothing);
-            Assert.That(Guard.AgainstNullOrEmptyString(s, nameof(s)), Is.EqualTo("value"));
+            Assert.That(() => Guard.AgainstEmpty(s), Throws.Nothing);
+            Assert.That(() => Guard.AgainstEmpty(s, null), Throws.Nothing);
+            Assert.That(() => Guard.AgainstEmpty(s, string.Empty), Throws.Nothing);
+            Assert.That(Guard.AgainstEmpty(s, nameof(s)), Is.EqualTo("value"));
 
             s = null;
 
-            Assert.That(() => Guard.AgainstNullOrEmptyString(s, nameof(s)), Throws.TypeOf<ArgumentNullException>());
-            Assert.That(() => Guard.AgainstNullOrEmptyString(s, null), Throws.TypeOf<ArgumentNullException>());
-            Assert.That(() => Guard.AgainstNullOrEmptyString(s, string.Empty), Throws.TypeOf<ArgumentNullException>());
+            Assert.That(() => Guard.AgainstEmpty(s, nameof(s)), Throws.TypeOf<ArgumentNullException>());
+            Assert.That(() => Guard.AgainstEmpty(s, null), Throws.TypeOf<ArgumentNullException>());
+            Assert.That(() => Guard.AgainstEmpty(s, string.Empty), Throws.TypeOf<ArgumentNullException>());
 
             s = string.Empty;
 
-            Assert.That(() => Guard.AgainstNullOrEmptyString(s, nameof(s)), Throws.TypeOf<ArgumentNullException>());
-            Assert.That(() => Guard.AgainstNullOrEmptyString(s, null), Throws.TypeOf<ArgumentNullException>());
-            Assert.That(() => Guard.AgainstNullOrEmptyString(s, string.Empty), Throws.TypeOf<ArgumentNullException>());
+            Assert.That(() => Guard.AgainstEmpty(s, nameof(s)), Throws.TypeOf<ArgumentNullException>());
+            Assert.That(() => Guard.AgainstEmpty(s, null), Throws.TypeOf<ArgumentNullException>());
+            Assert.That(() => Guard.AgainstEmpty(s, string.Empty), Throws.TypeOf<ArgumentNullException>());
 
             s = "   ";
 
-            Assert.That(() => Guard.AgainstNullOrEmptyString(s, nameof(s)), Throws.TypeOf<ArgumentNullException>());
-            Assert.That(() => Guard.AgainstNullOrEmptyString(s, null), Throws.TypeOf<ArgumentNullException>());
-            Assert.That(() => Guard.AgainstNullOrEmptyString(s, string.Empty), Throws.TypeOf<ArgumentNullException>());
+            Assert.That(() => Guard.AgainstEmpty(s, nameof(s)), Throws.TypeOf<ArgumentNullException>());
+            Assert.That(() => Guard.AgainstEmpty(s, null), Throws.TypeOf<ArgumentNullException>());
+            Assert.That(() => Guard.AgainstEmpty(s, string.Empty), Throws.TypeOf<ArgumentNullException>());
         }
 
         [Test]
@@ -109,26 +109,26 @@ namespace Shuttle.Core.Contract.Tests
         [Test]
         public void Should_be_able_to_guard_against_an_empty_enumerable()
         {
-            Assert.That(() => Guard.AgainstEmptyEnumerable(new List<string>(), "list"), Throws.TypeOf<InvalidOperationException>());
+            Assert.That(() => Guard.AgainstEmpty(new List<string>(), "list"), Throws.TypeOf<InvalidOperationException>());
 
             var list = new List<string>
             {
                 "item-one"
             };
 
-            Assert.That(() => Guard.AgainstEmptyEnumerable(list), Throws.Nothing);
-            Assert.That(Guard.AgainstEmptyEnumerable(list, nameof(list)).ElementAt(0), Is.EqualTo("item-one"));
+            Assert.That(() => Guard.AgainstEmpty(list), Throws.Nothing);
+            Assert.That(Guard.AgainstEmpty(list, nameof(list)).ElementAt(0), Is.EqualTo("item-one"));
         }
 
         [Test]
         public void Should_be_able_to_guard_against_empty_guid()
         {
-            Assert.That(() => Guard.AgainstEmptyGuid(Guid.Empty, string.Empty), Throws.TypeOf<ArgumentException>());
+            Assert.That(() => Guard.AgainstEmpty(Guid.Empty, string.Empty), Throws.TypeOf<ArgumentException>());
 
             var guid = Guid.NewGuid();
 
-            Assert.That(() => Guard.AgainstEmptyGuid(guid), Throws.Nothing);
-            Assert.That(Guard.AgainstEmptyGuid(guid, nameof(guid)), Is.EqualTo(guid));
+            Assert.That(() => Guard.AgainstEmpty(guid), Throws.Nothing);
+            Assert.That(Guard.AgainstEmpty(guid, nameof(guid)), Is.EqualTo(guid));
         }
     }
 }

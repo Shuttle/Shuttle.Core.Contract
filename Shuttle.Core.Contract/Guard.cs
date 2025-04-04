@@ -39,7 +39,13 @@ namespace Shuttle.Core.Contract
             return value;
         }
 
+        [Obsolete("Please replace with 'AgainstEmpty'.")]
         public static string AgainstNullOrEmptyString(string? value, [CallerArgumentExpression("value")] string? name = null)
+        {
+            return AgainstEmpty(value, name);
+        }
+
+        public static string AgainstEmpty(string? value, [CallerArgumentExpression("value")] string? name = null)
         {
             if (string.IsNullOrWhiteSpace(value))
             {
@@ -49,7 +55,13 @@ namespace Shuttle.Core.Contract
             return value;
         }
 
+        [Obsolete("Please replace with 'AgainstEmpty'.")]
         public static Guid AgainstEmptyGuid(Guid value, [CallerArgumentExpression("value")] string? name = null)
+        {
+            return AgainstEmpty(value, name);
+        }
+
+        public static Guid AgainstEmpty(Guid value, [CallerArgumentExpression("value")] string? name = null)
         {
             if (Guid.Empty.Equals(value))
             {
@@ -71,7 +83,13 @@ namespace Shuttle.Core.Contract
             return (TEnum)Enum.Parse(typeof(TEnum), value.ToString()!);
         }
 
+        [Obsolete("Please replace with 'AgainstEmpty'.")]
         public static IEnumerable<T> AgainstEmptyEnumerable<T>(IEnumerable<T> enumerable, [CallerArgumentExpression("enumerable")] string? name = null)
+        {
+            return AgainstEmpty(enumerable, name);
+        }
+
+        public static IEnumerable<T> AgainstEmpty<T>(IEnumerable<T> enumerable, [CallerArgumentExpression("enumerable")] string? name = null)
         {
             if (enumerable == null)
             {

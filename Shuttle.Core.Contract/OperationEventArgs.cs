@@ -9,7 +9,7 @@ namespace Shuttle.Core.Contract
 
         public OperationEventArgs(string name, object? data = null)
         {
-            Name = Guard.AgainstNullOrEmptyString(name, nameof(name));
+            Name = Guard.AgainstEmpty(name, nameof(name));
             Data = data;
         }
     }
@@ -21,7 +21,7 @@ namespace Shuttle.Core.Contract
 
         public OperationEventArgs(string name, T? data)
         {
-            Name = Guard.AgainstNullOrEmptyString(name, nameof(name));
+            Name = Guard.AgainstEmpty(name, nameof(name));
             Data = data;
         }
     }
